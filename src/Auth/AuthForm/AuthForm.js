@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import './AuthForm.css'
 
 const FormContainer = styled('div')`
+
+@media(min-width: 60rem) {
     position: fixed;
     top: 50%;
     background: #45aaf2;
@@ -11,6 +13,14 @@ const FormContainer = styled('div')`
     height: 500px;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+position: fixed;
+top: 50%;
+background: #45aaf2;
+width: 100%;
+height: 500px;
+left: 50%;
+transform: translate(-50%, -50%);
 `;
 
 export const FormScreen = (props) => (

@@ -11,6 +11,14 @@ function Auth() {
     const [errorMsg, setErrorMsg] = useState('');
 
     const handleLogin = () => {
+        fire.auth().signInWithEmailAndPassword(email, password)
+            .then((u) => {
+                console.log(u)
+                console.log(`User created. Email: ${email}, Password: ${password}`)
+            }).catch((error) => {
+                console.log(error)
+                setErrorMsg(error.message)
+            })
         console.log(email, password)
     }
 
@@ -18,14 +26,12 @@ function Auth() {
     const handleSignup = () => {
         fire.auth().createUserWithEmailAndPassword(email, password)
             .then((u) => {
+                console.log(u)
                 const user = fire.auth().currentUser;
-                if (username === '') {
-                    setErrorMsg('Please type a username')
-                } else {
+
                     user.updateProfile({
                         displayName: username
                     })
-                }
                 console.log('User created')
             }).catch((error) => {
                 console.log(error)
