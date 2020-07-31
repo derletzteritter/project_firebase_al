@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 
+import './AuthForm.css'
+
 const FormContainer = styled('div')`
     position: fixed;
     top: 50%;
@@ -9,13 +11,11 @@ const FormContainer = styled('div')`
     height: 500px;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 `;
 
 export const FormScreen = (props) => (
     <FormContainer>
+        <h1 className='auth-title'>{props.title}</h1>
         {props.children}
     </FormContainer>
 )

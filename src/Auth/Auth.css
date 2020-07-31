@@ -1,0 +1,44 @@
+.auth-form {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 5em;
+}
+
+::placeholder {
+    color: #d1d8e0;
+}
+
+.auth-form input {
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    border-bottom: 2px solid #fff;
+    display: block;
+    background: transparent;
+    color: #fff;
+    margin: auto;
+    margin-top: 20px;
+    width: 40%;
+}
+
+.auth-form button {
+    display: block;
+    margin: auto;
+    width: 40%;
+    border: none;
+    background: #fff;
+    margin-top: 20px;
+    padding: 10px;
+    font-weight: 600;
+    color: #2d98da;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.error-message {
+    text-align: center;
+    color: #eb4d4b;
+    font-weight: 600;
+}

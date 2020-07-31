@@ -1,27 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import fire from '../config/Fire';
+import './Auth.css';
 
 import { FormScreen } from './AuthForm/AuthForm';
 
 function Auth() {
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
 
     const handleLogin = () => {
         console.log(email, password)
     }
 
+
     const handleSignup = () => {
         fire.auth().createUserWithEmailAndPassword(email, password)
             .then((u) => {
                 const user = fire.auth().currentUser;
-                user.updateProfile({
-                    displayName: name
-                })
+                if (username === '') {
+                    setErrorMsg('Please type a username')
+                } else {
+                    user.updateProfile({
+                        displayName: username
+                    })
+                }
                 console.log('User created')
             }).catch((error) => {
                 console.log(error)
+                setErrorMsg(error.message)
             })
 
         console.log(email, password)
@@ -29,25 +37,32 @@ function Auth() {
 
     return (
         <div>
-            <FormScreen>
-                <div>
+            <FormScreen title='Login / Signup'>
+                <p className="error-message">{errorMsg}</p>
+                <div className='auth-form'>
                     <input 
-                        placeholder='Name'
-                        value={name}
-                        onChange={e => setName(e.target.value)}
+                        className="auth-input"
+                        placeholder='Username'
+                        value={username}
+                        type='text'
+                        onChange={e => setUsername(e.target.value)}
                     />
                     <input 
+                    className="auth-input"
                         placeholder='Email'
                         value={email}
+                        type='email'
                         onChange={e => setEmail(e.target.value)}
                     />
                     <input 
+                        className="auth-input"
                         placeholder='Passord'
                         value={password}
+                        type='password'
                         onChange={e => setPassword(e.target.value)}
                     />
-                    <button onClick={handleLogin}>Login</button>
-                    <button onClick={handleSignup}>Signup</button>
+                    <button className='auth-button' onClick={handleLogin}>Login</button>
+                    <button className='auth-button' onClick={handleSignup}>Signup</button>
                 </div>
             </FormScreen>
         </div>
