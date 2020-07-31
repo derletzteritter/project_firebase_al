@@ -1,8 +1,11 @@
 import React from 'react'
 import fire from './config/Fire';
 import Auth from './Auth/Auth';
-import Home from './components/pages/Home';
+import Routes from './Routes/Routes';
+
 import './App.css'
+
+
 
 class App extends React.Component {
 
@@ -30,7 +33,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                {this.state.user ? (<Home email={this.state.user.displayName}/>) : (<Auth />)}
+                {this.state.user ? (<Routes />) : (<Auth />)}
             </div>
         )
     }

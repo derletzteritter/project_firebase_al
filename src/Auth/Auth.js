@@ -28,10 +28,9 @@ function Auth() {
             .then((u) => {
                 console.log(u)
                 const user = fire.auth().currentUser;
-
-                    user.updateProfile({
-                        displayName: username
-                    })
+                user.updateProfile({
+                    displayName: username
+                })
                 console.log('User created')
             }).catch((error) => {
                 console.log(error)
